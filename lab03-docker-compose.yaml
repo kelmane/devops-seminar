@@ -1,0 +1,17 @@
+
+version: '3.3'
+services:
+  web:
+    image: yanivomc/spring-music:latest
+    ports:
+     - 8080:8080
+
+  nginx:
+    image: nginx:latest
+    ports:
+     - 80:80
+
+  redisdb:
+    image: redis:latest
+    ports:
+     - 6379:6379
