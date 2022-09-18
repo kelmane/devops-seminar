@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+  web:
+    build: ./spring-app/
+    image: yanivomc/spring-music:ek1
+    restart: unless-stopped
+    networks:
+     - applayer
+     - dblayer
+    ports:
+     - 8080:8080
+
+  db_mysql:
+    image: wangxian/alpine-mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=music
+    networks:
+      - dblayer
+
+networks:
+ dblayer:
+  driver: bridge
+ applayer:
+  driver: bridge
